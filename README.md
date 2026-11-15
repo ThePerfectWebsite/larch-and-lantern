@@ -7,7 +7,7 @@ A working concept website for **Larch & Lantern Cottages**, a fictional collecti
 **The pitch:** owners pay commission and fees on every booking from the big booking platforms. A beautiful site that takes **direct bookings** pays for itself. Every page supports that story: live availability, the exact price for your dates up front, a deposit-or-full demo checkout, and an owner dashboard that blocks dates and exports an iCal feed, so there's no need to manage two calendars.
 
 - **Industry:** Holiday lets
-- **Live:** https://larch-and-lantern.solutionssitesync.workers.dev
+- **Live:** https://larch.sitesync-solutions.co.uk (also served at https://larch-and-lantern.solutionssitesync.workers.dev)
 - **Stack:** static HTML, CSS and vanilla JavaScript in `public/`, served by a Cloudflare Worker with static assets. No framework and no build step.
 
 ## Pages
@@ -96,6 +96,8 @@ The site deploys to Cloudflare Workers from GitHub. Every push to `main` deploys
 - Deploy command: `npx wrangler deploy`
 
 To deploy by hand: `npx wrangler deploy`.
+
+**Domain:** canonical tags, Open Graph URLs, structured data, `sitemap.xml` and `robots.txt` all use `https://larch.sitesync-solutions.co.uk`, set by `url` in `public/js/data/site.js`. To change it, edit that line and run `node tools/build.mjs`. Add the domain to the Worker under Settings → Domains & Routes → Custom domain.
 
 ---
 

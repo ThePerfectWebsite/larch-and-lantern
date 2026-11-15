@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://larch-and-lantern.solutionssitesync.workers.dev/sitemap.xml
+Sitemap: https://larch.sitesync-solutions.co.uk/sitemap.xml

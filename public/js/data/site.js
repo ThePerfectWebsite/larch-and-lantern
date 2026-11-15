@@ -8,7 +8,7 @@
     name: "Larch & Lantern Cottages",
     shortName: "Larch & Lantern",
     tagline: "Wake up on the edge of Sherwood.",
-    url: "https://larch-and-lantern.solutionssitesync.workers.dev",
+    url: "https://larch.sitesync-solutions.co.uk",
     // Obviously fictional address and a phone number from Ofcom's drama range.
     address: {
       street: "Larch Lane (fictional)",
