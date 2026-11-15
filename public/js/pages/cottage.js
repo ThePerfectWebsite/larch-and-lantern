@@ -39,10 +39,11 @@
       (c.maxDogs ? stepper("st-dogs", "Dogs", state.dogs, 0, c.maxDogs, "£" + LL.getPricing().petFee + " each per stay") : "") + "</div>";
     if (!c.maxDogs) html += '<p class="small muted mt-0">No pets at ' + LL.esc(c.name) + ". Assistance dogs welcome.</p>";
 
-    html += '<fieldset class="mt-1"><legend class="label">Optional extras</legend>' + c.extras.map(function (id) {
+    var nX = state.extras.length;
+    html += '<details class="extras-toggle mt-1"' + (state.extrasOpen ? " open" : "") + '><summary>Optional extras' + (nX ? ' <span class="badge">' + nX + " added</span>" : "") + '</summary><fieldset class="mt-1 mb-0"><legend class="sr-only">Optional extras</legend>' + c.extras.map(function (id) {
       var e = LL.extras[id];
       return '<label class="check"><input type="checkbox" value="' + id + '"' + (state.extras.indexOf(id) > -1 ? " checked" : "") + '><span><strong>' + LL.esc(e.label) + '</strong><br><span class="small muted">' + LL.esc(e.detail) + '</span></span><span class="price-tag">£' + e.price + (e.per === "night" ? "/night" : "") + "</span></label>";
-    }).join("") + "</fieldset>";
+    }).join("") + "</fieldset></details>";
 
     var endIso = state.out || state.preview;
     if (state.in && endIso) {
@@ -85,6 +86,7 @@
     }
     if (e.target.id === "clear-dates") { cal.clear(); document.getElementById("availability").scrollIntoView(); }
   });
+  sum.addEventListener("toggle", function (e) { if (e.target.classList && e.target.classList.contains("extras-toggle")) state.extrasOpen = e.target.open; }, true);
   sum.addEventListener("change", function (e) {
     if (e.target.type !== "checkbox") return;
     var i = state.extras.indexOf(e.target.value);

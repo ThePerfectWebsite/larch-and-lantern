@@ -26,6 +26,35 @@
   root.addEventListener("scroll", function () { if (!ticking) { ticking = true; root.requestAnimationFrame(onScroll); } }, { passive: true });
   onScroll();
 
+  // Sticky side panels: if a panel is taller than the screen, let it scroll
+  // with the page until its bottom is visible, then hold it there (so the
+  // total and the Book button are never stuck off-screen).
+  var stickies = doc.querySelectorAll(".booking-aside, .book-layout aside");
+  function fitSticky() {
+    var vh = root.innerHeight;
+    stickies.forEach(function (el) {
+      var h = el.offsetHeight, topGap = 88;
+      el.style.top = h + topGap + 16 > vh ? Math.round(vh - h - 16) + "px" : "";
+    });
+  }
+  LL.fitSticky = fitSticky;
+  root.addEventListener("resize", fitSticky);
+  if ("ResizeObserver" in root) {
+    var ro = new ResizeObserver(fitSticky);
+    stickies.forEach(function (el) { ro.observe(el); });
+  }
+  root.addEventListener("load", fitSticky);
+  fitSticky();
+  // Booking page builds its aside after load, so watch for it too.
+  var bookApp = doc.getElementById("book-app");
+  if (bookApp && "MutationObserver" in root && "ResizeObserver" in root) {
+    new MutationObserver(function () {
+      stickies = doc.querySelectorAll(".booking-aside, .book-layout aside");
+      stickies.forEach(function (el) { ro.observe(el); });
+      fitSticky();
+    }).observe(bookApp, { childList: true });
+  }
+
   // Toast
   var toastEl;
   LL.toast = function (text) {
