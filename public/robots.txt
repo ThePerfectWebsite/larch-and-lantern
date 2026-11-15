@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://larch-and-lantern.solutionssitesync.workers.dev/sitemap.xml
