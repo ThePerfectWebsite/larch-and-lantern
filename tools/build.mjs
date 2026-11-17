@@ -72,7 +72,7 @@ ${jsonld}
 </head>
 <body${p.bodyClass ? ` class="${p.bodyClass}"` : ""}>
 <a class="skip" href="#main">Skip to content</a>
-<div class="concept-bar" role="note"><div class="wrap">${DISCLAIMER}</div></div>
+<aside class="concept-bar" aria-label="About this concept"><div class="wrap">${DISCLAIMER}</div></aside>
 <header class="site-header">
   <div class="wrap header-in">
     ${brand()}
@@ -577,7 +577,7 @@ pages.push({
 <section class="wrap page-head"><span class="eyebrow">Why book direct</span><h1>Book direct, keep it simple</h1><p class="lead">We list on booking platforms too, because that's how many people find us. But booking here is better for you and for us. Here's an honest comparison.</p></section>
 <section class="wrap"><div class="table-wrap"><table class="compare">
   <caption class="sr-only">Booking direct compared with booking through a booking platform</caption>
-  <thead><tr><th scope="col"></th><th scope="col">Book direct with us</th><th scope="col">Via a booking platform</th></tr></thead>
+  <thead><tr><th scope="col"><span class="sr-only">What you get</span></th><th scope="col">Book direct with us</th><th scope="col">Via a booking platform</th></tr></thead>
   <tbody>
     <tr><th scope="row">Booking fees</th><td>${yes("None. The price you see is the total.")}</td><td>${no("Guest service fees are often added")}</td></tr>
     <tr><th scope="row">Price</th><td>${yes("Our best price, always")}</td><td>${no("Usually higher, to cover commission")}</td></tr>
